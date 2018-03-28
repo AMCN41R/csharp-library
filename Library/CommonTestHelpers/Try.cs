@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Library.Tests.CommonHelpers
+namespace Library.CommonTestHelpers
 {
 
     public class Try

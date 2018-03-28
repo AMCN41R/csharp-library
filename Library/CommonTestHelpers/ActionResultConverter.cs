@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Library.Tests.CommonHelpers
+namespace Library.CommonTestHelpers
 {
     public static class ActionResultConverter
     {

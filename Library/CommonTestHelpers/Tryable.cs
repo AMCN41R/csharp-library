@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Library.Tests.CommonHelpers
+namespace Library.CommonTestHelpers
 {
     public class Tryable<TResult> : ITryRunnable<TResult>, ITryRunnableAsync<TResult>
     {
