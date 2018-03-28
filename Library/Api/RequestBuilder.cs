@@ -37,7 +37,11 @@ namespace Library.Api
         async Task<TResult> IRequestBuilderHeadersBodySend.SendAsync<TResult>()
         {
             var response = await this.Client.SendAsync(this.Request);
+
+            response.EnsureSuccessStatusCode();
+
             var result = await response.Content.ReadAsAsync<TResult>();
+            
             return result;
         }
 
