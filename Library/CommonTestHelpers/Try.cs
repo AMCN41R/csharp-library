@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Library.CommonTestHelpers
+﻿namespace Library.CommonTestHelpers
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class Try
     {
@@ -13,7 +12,8 @@ namespace Library.CommonTestHelpers
         /// <typeparam name="TResult"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static ITryRunnableAsync<TResult> ToExecute<TResult>(Func<Task<TResult>> action) where TResult : class
+        public static ITryRunnableAsync<TResult> ToExecute<TResult>(Func<Task<TResult>> action)
+            where TResult : class
         {
             return new Tryable<TResult>(action);
         }
@@ -24,7 +24,8 @@ namespace Library.CommonTestHelpers
         /// <typeparam name="TResult"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static ITryRunnable<TResult> ToExecute<TResult>(Func<TResult> action) where TResult : class
+        public static ITryRunnable<TResult> ToExecute<TResult>(Func<TResult> action)
+            where TResult : class
         {
             if (action.IsAwaitable())
             {
@@ -37,7 +38,8 @@ namespace Library.CommonTestHelpers
 
     internal static class FuncExtensions
     {
-        public static bool IsAwaitable<TResult>(this Func<TResult> action) where TResult : class
+        public static bool IsAwaitable<TResult>(this Func<TResult> action)
+            where TResult : class
         {
             var resultType = action
                 .GetType()

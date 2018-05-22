@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Library.CommonTestHelpers
+﻿namespace Library.CommonTestHelpers
 {
+    using System;
+    using System.Threading.Tasks;
+
     public class Tryable<TResult> : ITryRunnable<TResult>, ITryRunnableAsync<TResult>
     {
         public Tryable(Func<TResult> action)

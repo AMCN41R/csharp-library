@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Library.Guards;
-using MongoDB.Bson;
-using MongoDB.Driver;
-
-namespace Library.Mongo
+﻿namespace Library.Mongo
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Threading.Tasks;
+    using Library.Guards;
+    using MongoDB.Bson;
+    using MongoDB.Driver;
+
     public static class CollectionExtensions
     {
         public static IFindFluent<T, T> Where<T>(this IMongoCollection<T> collection, Expression<Func<T, bool>> predicate)
@@ -44,7 +44,8 @@ namespace Library.Mongo
         /// <param name="id">The unique id of the required entity.</param>
         /// <returns>A Task whose result is the single result or null.</returns>
         /// <exception cref="Guard.DefaultValueException">Thrown when the given <paramref name="id"/> is equal to <see cref="Guid.Empty"/>.</exception>
-        public static async Task<T> GetOneAsync<T>(this IMongoCollection<T> collection, Guid id) where T : IEntity
+        public static async Task<T> GetOneAsync<T>(this IMongoCollection<T> collection, Guid id)
+            where T : IEntity
         {
             Guard.AgainstNullArgument(nameof(collection), collection);
             Guard.AgainstDefaultValue(nameof(id), id);
@@ -63,7 +64,8 @@ namespace Library.Mongo
         /// <param name="entity">The entity to insert or update.</param>
         /// <returns>The entity's id.</returns>
         /// <exception cref="ArgumentNullException">Thrown when the given <paramref name="entity"/> is null.</exception>
-        public static async Task<Guid> AddOrUpdate<T>(this IMongoCollection<T> collection, T entity) where T : class, IEntity
+        public static async Task<Guid> AddOrUpdate<T>(this IMongoCollection<T> collection, T entity)
+            where T : class, IEntity
         {
             Guard.AgainstNullArgument(nameof(collection), collection);
             Guard.AgainstNullArgument(nameof(entity), entity);
@@ -86,7 +88,8 @@ namespace Library.Mongo
         /// <param name="collection">The mongo collection to search.</param>
         /// <param name="id">The unique id of the entity to be deleted.</param>
         /// <exception cref="Guard.DefaultValueException">Thrown when the given <paramref name="id"/> is equal to <see cref="Guid.Empty"/>.</exception>
-        public static async Task DeleteOneByIdAsync<T>(this IMongoCollection<T> collection, Guid id) where T : IEntity
+        public static async Task DeleteOneByIdAsync<T>(this IMongoCollection<T> collection, Guid id)
+            where T : IEntity
         {
             Guard.AgainstNullArgument(nameof(collection), collection);
             Guard.AgainstDefaultValue(nameof(id), id);

@@ -1,7 +1,7 @@
-﻿using MongoDB.Driver;
-
-namespace Library.Mongo
+﻿namespace Library.Mongo
 {
+    using MongoDB.Driver;
+
     public interface IMongoConnectionFactory
     {
         IMongoClient GetClient();

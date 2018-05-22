@@ -1,8 +1,8 @@
-﻿using Library.CommonExtensions;
-using Xunit;
-
-namespace Library.Tests.CommonExtensions
+﻿namespace Library.Tests.CommonExtensions
 {
+    using Library.CommonExtensions;
+    using Xunit;
+
     public class StringExtensionsTests
     {
         #region IsEmpty

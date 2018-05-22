@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Library
+﻿namespace Library
 {
+    using System;
+
     public sealed class Maybe<T>
     {
         public Maybe()
@@ -31,8 +31,8 @@ namespace Library
                 throw new ArgumentNullException(nameof(selector));
             }
 
-            return this.HasItem 
-                ? new Maybe<TResult>(selector(this.Item)) 
+            return this.HasItem
+                ? new Maybe<TResult>(selector(this.Item))
                 : new Maybe<TResult>();
         }
 
@@ -48,12 +48,12 @@ namespace Library
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Maybe<T> other))
+            if (obj is Maybe<T> other)
             {
-                return false;
+                return Equals(this.Item, other.Item);
             }
 
-            return Equals(this.Item, other.Item);
+            return false;
         }
 
         public override int GetHashCode()

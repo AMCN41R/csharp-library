@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Project Rules" Description="These rules focus on critical issues for the library project." ToolsVersion="10.0">
+  <!-- <RuleHintPaths> -->
+    <!-- <Path>..\Tools\FxCop\SomeRules.dll</Path> -->
+  <!-- </RuleHintPaths> -->
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1009" Action="None" />
+	<Rule Id="SA1111" Action="None" />
+	<Rule Id="SA1633" Action="None" />
+  </Rules>
+</RuleSet>

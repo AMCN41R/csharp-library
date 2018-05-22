@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{CC419C14-27EE-4543-BDDF-AA630D9CE8D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{CC419C14-27EE-4543-BDDF-AA630D9CE8D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{D245E557-061C-48B5-B67D-FA1E5FCC9E36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Tests", "Library.Tests\Library.Tests.csproj", "{D245E557-061C-48B5-B67D-FA1E5FCC9E36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8DD7C020-D691-423E-8E86-70ACAA08688D}"
+	ProjectSection(SolutionItems) = preProject
+		analysis.ruleset = analysis.ruleset
+		stylecop.json = stylecop.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

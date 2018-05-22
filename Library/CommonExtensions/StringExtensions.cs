@@ -1,5 +1,8 @@
 ﻿namespace Library.CommonExtensions
 {
+    /// <summary>
+    /// A set of extension methods on <see cref="string"/>.
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>
@@ -26,7 +29,7 @@
         /// Indicates whether the specified string is null, empty, or consists only of white-space characters.
         /// </summary>
         /// <param name="value">The string to test.</param>
-        /// <returns>true if the <paramref name="value">value</paramref> parameter is null or <see cref="System.String.Empty"></see>, or if <paramref name="value">value</paramref> consists exclusively of white-space characters.</returns>
+        /// <returns>true if the <paramref name="value">value</paramref> parameter is null or <see cref="string.Empty"></see>, or if <paramref name="value">value</paramref> consists exclusively of white-space characters.</returns>
         public static bool IsNullOrWhitespace(this string value)
         {
             return string.IsNullOrWhiteSpace(value);

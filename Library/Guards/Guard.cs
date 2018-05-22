@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-
-namespace Library.Guards
+﻿namespace Library.Guards
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Linq;
+
+    using Library.Guards.Exceptions;
+
     /// <summary>
     /// Provides guard clauses.
     /// </summary>
@@ -194,7 +196,7 @@ namespace Library.Guards
         {
             if (argument.Length > characterLimit)
             {
-                throw new StringExceedsNCharactersException(
+                throw new StringExceedsMaxLengthException(
                     string.Format(
                         CultureInfo.InvariantCulture,
                         "Argument {0} exceeds {1} characters",
@@ -227,22 +229,8 @@ namespace Library.Guards
         }
 
         [DebuggerStepThrough]
-        [Obsolete("Use Guard.AgainstDefaultValue instead.")]
-        public static void AgainstEmptyArgument(string parameterName, Guid argument)
-        {
-            if (argument == Guid.Empty)
-            {
-                throw new EmptyGuidException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Argument {0} is an empty guid.",
-                        parameterName));
-            }
-        }
-
-
-        [DebuggerStepThrough]
-        public static void AgainstDefaultValue<T>(string parameterName, T argument) where T : struct
+        public static void AgainstDefaultValue<T>(string parameterName, T argument)
+            where T : struct
         {
             var value = default(T);
 
@@ -260,7 +248,8 @@ namespace Library.Guards
         }
 
         [DebuggerStepThrough]
-        public static void AgainstDefaultValues<T>(string parameterName, IEnumerable<T> argument) where T : struct
+        public static void AgainstDefaultValues<T>(string parameterName, IEnumerable<T> argument)
+            where T : struct
         {
             var value = default(T);
 
@@ -288,48 +277,6 @@ namespace Library.Guards
         private static bool IsNullableType(this Type type)
         {
             return !type.IsValueType || type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
-        }
-
-        public class EmptyStringException : Exception
-        {
-            public EmptyStringException(string message) : base(message)
-            {
-            }
-        }
-
-        public class WhitespaceException : Exception
-        {
-            public WhitespaceException(string message) : base(message)
-            {
-            }
-        }
-
-        public class StringExceedsNCharactersException : Exception
-        {
-            public StringExceedsNCharactersException(string message) : base(message)
-            {
-            }
-        }
-
-        public class EmptyGuidException : Exception
-        {
-            public EmptyGuidException(string message) : base(message)
-            {
-            }
-        }
-
-        public class DefaultValueException : Exception
-        {
-            public DefaultValueException(string message) : base(message)
-            {
-            }
-        }
-
-        public class EmptyListException : Exception
-        {
-            public EmptyListException(string message) : base(message)
-            {
-            }
         }
     }
 }

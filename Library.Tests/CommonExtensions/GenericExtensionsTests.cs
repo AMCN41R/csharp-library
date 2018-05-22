@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Library.CommonExtensions;
-using Xunit;
-
-namespace Library.Tests.CommonExtensions
+﻿namespace Library.Tests.CommonExtensions
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Library.CommonExtensions;
+
+    using Xunit;
+
     public class GenericExtensionsTests
     {
         [Fact]
@@ -38,9 +40,9 @@ namespace Library.Tests.CommonExtensions
             // Arrange
             var sut = new Dictionary<int, decimal>
             {
-                {1, 10.5m},
-                {2, 17.2m},
-                {3, 59.9m}
+                { 1, 10.5m },
+                { 2, 17.2m },
+                { 3, 59.9m }
             };
 
             // Act
@@ -56,9 +58,9 @@ namespace Library.Tests.CommonExtensions
             // Arrange
             var sut = new Dictionary<int, decimal>
             {
-                {1, 10.5m},
-                {2, 17.2m},
-                {3, 59.9m}
+                { 1, 10.5m },
+                { 2, 17.2m },
+                { 3, 59.9m }
             };
 
             // Act
@@ -74,9 +76,9 @@ namespace Library.Tests.CommonExtensions
             // Arrange
             var sut = new Dictionary<int, TestClass>
             {
-                { 1, new TestClass{Id = 1, Name = "Item 1" } },
-                { 2, new TestClass{Id = 2, Name = "Item 2" } },
-                { 3, new TestClass{Id = 3, Name = "Item 3" } }
+                { 1, new TestClass { Id = 1, Name = "Item 1" } },
+                { 2, new TestClass { Id = 2, Name = "Item 2" } },
+                { 3, new TestClass { Id = 3, Name = "Item 3" } }
             };
 
             // Act
@@ -92,9 +94,9 @@ namespace Library.Tests.CommonExtensions
             // Arrange
             var sut = new Dictionary<int, TestClass>
             {
-                { 1, new TestClass{Id = 1, Name = "Item 1" } },
-                { 2, new TestClass{Id = 2, Name = "Item 2" } },
-                { 3, new TestClass{Id = 3, Name = "Item 3" } }
+                { 1, new TestClass { Id = 1, Name = "Item 1" } },
+                { 2, new TestClass { Id = 2, Name = "Item 2" } },
+                { 3, new TestClass { Id = 3, Name = "Item 3" } }
             };
 
             // Act
