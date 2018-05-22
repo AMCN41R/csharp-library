@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+
 using Library.Guards;
+
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -55,7 +58,7 @@ namespace Library.Mongo
         }
 
         /// <summary>
-        /// Creates a filter using the entity's id and calls  <see cref="IMongoCollection{T}.ReplaceOneAsync"/>
+        /// Creates a filter using the entity's id and calls <see cref="IMongoCollection{T}.ReplaceOneAsync"/>
         /// as an upsert.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -76,6 +79,42 @@ namespace Library.Mongo
             await collection.ReplaceOneAsync(filter, entity, options);
 
             return entity.Id;
+        }
+
+        /// <summary>
+        /// Creates a <see cref="ReplaceOneModel{T}"/> for each entity and calls
+        /// <see cref="IMongoCollection{T}.BulkWriteAsync"/> as an upsert.
+        /// </summary>
+        /// <typeparam name="T">The type of <see cref="IEntity"/>.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="entities">The entities to insert or update.</param>
+        /// <returns>The entities ids.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when the given <paramref name="entities"/> is null.</exception>
+        public static async Task<IEnumerable<Guid>> AddOrUpdateMany<T>(this IMongoCollection<T> collection, ICollection<T> entities) where T : class, IEntity
+        {
+            Guard.AgainstNullArgument(nameof(collection), collection);
+            Guard.AgainstNullArgument(nameof(entities), entities);
+
+            if (!entities.Any())
+            {
+                return new List<Guid>();
+            }
+
+            var operations = new List<ReplaceOneModel<T>>();
+
+            foreach (var entity in entities)
+            {
+                entity.SetId();
+
+                var filter = Builders<T>.Filter.Eq(x => x.Id, entity.Id);
+                var operation = new ReplaceOneModel<T>(filter, entity) { IsUpsert = true };
+
+                operations.Add(operation);
+            }
+
+            await collection.BulkWriteAsync(operations);
+
+            return entities.Select(e => e.Id);
         }
 
         /// <summary>
