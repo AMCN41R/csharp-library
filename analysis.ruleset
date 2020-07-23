@@ -1,11 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RuleSet Name="Project Rules" Description="These rules focus on critical issues for the library project." ToolsVersion="10.0">
-  <!-- <RuleHintPaths> -->
-    <!-- <Path>..\Tools\FxCop\SomeRules.dll</Path> -->
-  <!-- </RuleHintPaths> -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Sandstorm Rule Set" Description=" " ToolsVersion="10.0">
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="AD0001" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0001" Action="None" />
+    <Rule Id="IDE0002" Action="None" />
+    <Rule Id="IDE0003" Action="None" />
+    <Rule Id="IDE0005" Action="None" />
+  </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
-    <Rule Id="SA1009" Action="None" />
-	<Rule Id="SA1111" Action="None" />
-	<Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1209" Action="None" />
+    <Rule Id="SA1210" Action="None" />
+    <Rule Id="SA1211" Action="None" />
+    <Rule Id="SA1404" Action="None" />
+    <Rule Id="SA1633" Action="None" />
   </Rules>
 </RuleSet>
